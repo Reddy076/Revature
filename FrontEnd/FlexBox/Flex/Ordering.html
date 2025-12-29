@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .FlexWrapper{
+      background-color: plum;
+      display: flex;
+      flex-direction:column;
+    }
+    .FlexItem{
+      background-color: antiquewhite;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      min-height: 6.25rem;
+    }
+    .FlexHeader{
+      background-color: aqua;
+      order:3;
+
+    } 
+    .FlexSideOne{
+      background-color: indianred;
+      order:5;
+    }
+    .FlexContent{
+      background-color:firebrick ;
+    }
+    .FlexSideTwo{
+      background-color: greenyellow;
+    }
+    .FlexFooter{
+      background-color:khaki ;
+      order:1;
+    }
+    @media(min-width:30rem){
+      .FlexWrapper{
+        flex-flow:row-wrap;
+    }
+    .FlexHeader{
+      width:100%;
+    }
+    .FlexContent{
+      flex:1 0 auto;
+      order:3;
+    }
+    .FlexSideOne{
+      width:150px;
+      order:2;
+    }
+    .FlexSideTwo{
+      width:150px;
+      order:4;
+    }
+    .FlexFooter{
+      width:100%;
+    }
+
+    }
+
+  </style>
+</head>
+<body>
+  <div class="FlexWrapper">
+    <div class="FlexItem FlexHeader">Iam a content in the headerer</div>
+    <div class="FlexItem FlexSideOne">Iam a content in the SideOne</div>
+    <div class="FlexItem FlexContent">Iam a content in the Content</div>
+    <div class="FlexItem FlexSideTwo">Iam a content in the SideTwo</div>
+    <div class="FlexItem FlexFooter">Iam a content in the Footer</div>
+    </div>
+
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,14 @@
+.MenuWrap {
+  display: flex;
+
+  gap: 15px;
+  font-size: 1rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+}
+
+.ListItem,
+.LastItem {
+  text-decoration: none;
+  color: black;
+}
