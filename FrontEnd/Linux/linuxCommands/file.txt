@@ -1,6 +1,0 @@
-pwd-present working directory
-ls-list files 
-mkdir-make directory(create a folder)
-rmdir-remove directory
-
-
