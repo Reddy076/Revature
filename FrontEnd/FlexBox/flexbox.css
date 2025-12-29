@@ -1,0 +1,11 @@
+.centerMe{
+  display: flex;
+  background-color: skyblue;
+  color: orange;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  text-transform: uppercase;
+  height:200px;
+  justify-content: center;
+  align-items: center;
+}
