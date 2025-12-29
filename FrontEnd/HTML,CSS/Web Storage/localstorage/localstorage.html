@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <div id="mes">
+    <h1 id="greet">welcome</h1>
+    <h3 id="name"> </h3>
+  </div>
+  <input type="button" onClick=display() value="click me">
+
+  <script>
+    function display(){
+      localStorage.clear();
+    }
+    let message='have a good day';
+    localStorage.setItem('message',message);
+    document.getElementById('greet').innerHTML=localStorage.getItem('message');
+    localStorage.setItem('name','Red');
+    document.getElementById('name').innerHTML=localStorage.getItem("name");
+  </script>
+
+    </body>

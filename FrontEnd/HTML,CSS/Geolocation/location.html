@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Geolocation API</title>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("errorOutput").textContent =
+                    "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const accuracy = position.coords.accuracy;
+
+            document.getElementById("locationOutput").innerHTML = `
+                <p><strong>Latitude:</strong> ${latitude}</p>
+                <p><strong>Longitude:</strong> ${longitude}</p>
+                <p><strong>Accuracy:</strong> ${accuracy} meters</p>
+            `;
+        }
+
+        function showError(error) {
+            let errorMessage = "An unknown error occurred";
+
+            if (error.code === 1) {
+                errorMessage = "Permission denied";
+            } else if (error.code === 2) {
+                errorMessage = "Position unavailable";
+            } else if (error.code === 3) {
+                errorMessage = "Request timeout";
+            }
+
+            document.getElementById("errorOutput").textContent = errorMessage;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>Geolocation API</h1>
+        <p>Click the button below to get your current location</p>
+        <button onclick="getLocation()">Get Location</button>
+
+        <div id="locationOutput"></div>
+        <div id="errorOutput"></div>
+    </div>
+</body>
+</html>

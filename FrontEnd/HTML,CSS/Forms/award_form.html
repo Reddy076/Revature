@@ -1,0 +1,153 @@
+<html>   
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Award Form</title>
+  </head>
+  <body>
+    <label for="search"> Search the site for the movie details </label>
+    <input id="search" name="search" type="search" />
+    <form id="form1" method="post">
+      <div>
+        <h1>Movie Awards</h1>
+        <fieldset>
+          <div>
+            <legend>about the movie</legend>
+            <label for="film"> the film</label>
+            <input
+              id="film"
+              name="film"
+              type="text"
+              placeholder="e.g Batman"  
+              required
+
+            />
+          </div>
+          <div>
+            <label for="year of release"
+              >the film in question is from the year</label>
+            <input
+              id="year of release"
+              name="year of release"
+              type="number"
+              min="2000"
+              max="'2020"
+            />
+          </div>
+          <div>
+            <label for="awardWon">award won</label>
+            <input id="awardWon" name="awardWon" type="text" list="awards" />
+            <datalist id="awards">
+              <select name="" id="">
+                <option value="Best Picture "></option>
+                <option value="Best Director"></option>
+                <option value="Best Story Writter"></option>
+                <option value="Best Camera Man"></option>
+                <option value="Best Visual Effects"></option>
+                <option value="Best Actor"></option>
+                <option value="Best Actress"></option>
+                <option value="Best Music"></option>
+              </select>
+            </datalist>
+          </div>
+          <div>
+            <label for="best part">Tell us the best part of the film</label>
+            <textarea
+              id="best part"
+              name="best part"
+              type="text"
+              placeholder="e.g the climax"
+            >
+            </textarea>
+          </div>
+          <div>
+            <label for="rating"></label>
+            <input
+              id="rating"
+              name="rating"
+              type="range"
+              min="1"
+              max="5"
+              onchange="showValue(this.value)"
+            />
+            <span id="range">3</span>
+            <script>
+              function showValue(newValue) {
+                document.getElementById("range").innerHTML = newValue;
+              }
+            </script>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>film recommended</legend>
+          <div>
+            <lable for="filmAt"> The other films you recommend</lable>
+            <input id="filmAt" name="filmAt" type="text" value="" />
+          </div>
+          <div>
+            <label for="why"> Why do you recommend it</label>
+            <input
+              id="why"
+              name="why"
+              type="text"
+              placeholder="e.g great story line"
+            />
+          </div>
+          <div>
+            <label for="howyourate"> How do you rate it</label>
+            <input
+              id="howyourate"
+              name="howyourate"
+              type="number"
+              min="1"
+              max="5"
+              value="5"
+              required
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>personal information</legend>
+          <div>
+            <lable for="name">Your Name</lable>
+            <input id="name" name="name" type="text" pattern="[A-Za-z\s'-]+" />
+          </div>
+          <div>
+            <label for="color"> your favorite color</label>
+            <input id="color" name="color" type="color" />
+          </div>
+          <div>
+            <label for="date"> select a date</label>
+            <input id="date" name="date" type="date" />
+          </div>
+          <div>
+            <label for="month"> select a month</label>
+            <input id="month" name="month" type="month" />
+          </div>
+          <div>
+            <label for="week"> select a week</label>
+            <input id="week" name="week" type="week" />
+          </div>
+          <div>
+            <label for="time"> select a time</label>
+            <input id="time" name="time" type="time" />
+          </div>
+
+          <div>
+            <label for="tel"> Telephone</label>
+            <input id="tel" name="tel" type="tel" autocomplete="off" />
+          </div>
+          <div>
+            <label for="email"> Email</label>
+            <input id="email" name="email" type="email" />
+          </div>
+          <div>
+            <label for="web"> your web site address</label>
+            <input id="web" name="web" type="web" />
+          </div>
+        </fieldset>
+      </div>
+      <input type="submit" id="submit" />
+    </form>
+  </body>
+</html>

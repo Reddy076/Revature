@@ -1,0 +1,174 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IndexedDB Example</title>
+</head>
+<body>
+  <h1>IndexedDB</h1>
+  <input id="red" type="text" value=""onchange=addStudent()>
+  <button onclick=addData()>Add Data</button>
+  <button onclick=readData()>Read Data</button>
+  <p id="output">
+
+  </p>
+  <script>
+    let db=null;
+    // open or create a database
+    let request=indexedDB.open('studentDB',1)
+    // create object store
+    request.onupgradeneeded=function(event){
+      db=event.target.result;
+      db.createObjectStore('students',{keyPath:'id'})
+    }
+    // on success
+    request.onsuccess=function(event){
+      db=event.target.result;
+
+    }
+    request.onerror=function(event){
+      document.getElementById('output').innerText='error'+event.target.errorCode;
+    }
+    // add data
+    function addData(){
+      let transaction=db.transaction(['students'],'readwrite');
+      let store=transaction.objectStore('students');
+      let student={
+        
+      }
+      function onStudent(){
+        document.getElementById('red').value
+      }
+
+      let request=store.add(student);
+      request.onsuccess=function(event){
+        document.getElementById('output').innerText='data added successfully';
+      }
+    }
+    // read data
+    function readData(){
+        let transaction=db.transaction(['students'],'readonly');
+        let store=transaction.objectStore('students');
+        let request=store.get(1);
+        request.onsuccess=function(event){
+            if(event.target.result){
+                let student=event.target.result;
+                document.getElementById('output').innerText='id: '+student.id+', name: '+student.name+', age: '+student.age;
+            } else {
+                document.getElementById('output').innerText='no data found';
+            }
+        }
+    }
+    
+  </script>
+    </body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IndexedDB Student Example</title>
+    
+</head>
+<body>
+    <h1>IndexedDB - Student Database</h1>
+
+    <label for="id">Student ID (unique number):</label>
+    <input type="number" id="id" placeholder="e.g. 1" required>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="e.g. John Doe" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" placeholder="e.g. 20" required>
+
+    <label for="search">Search by ID:</label>
+    <input type="number" id="search" >
+
+    <button onclick="addData()">Add Student</button>
+    <button onclick="readData()">Read Student</button>
+    <button onclick="clearOutput()">Clear Output</button>
+
+    <p id="output"></p>
+
+    <script>
+        let db = null;
+        const request = indexedDB.open('studentDB', 1);
+        request.onupgradeneeded = function(event) {
+            db = event.target.result;
+                db.createObjectStore('students', { keyPath: 'id' });
+        };
+
+        request.onsuccess = function(event) {
+            db = event.target.result;
+            document.getElementById('output').innerText = 'Database ready';
+        };
+
+        request.onerror = function(event) {
+            document.getElementById('output').innerText = 'Error opening database: ' + event.target.errorCode;
+        };
+        function addData() {
+            
+
+            const id = parseInt(document.getElementById('id').value);
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+
+            if (!id || !name || !age) {
+                document.getElementById('output').innerText = 'Please fill all fields correctly.';
+                return;
+            }
+
+            const transaction = db.transaction(['students'], 'readwrite');
+            const store = transaction.objectStore('students');
+
+            const student = { id: id, name: name, age: age };
+
+            const request = store.add(student);
+
+            request.onsuccess = function() {
+                document.getElementById('output').innerText = `Student "${name}" (ID: ${id}) added successfully!`;
+                document.getElementById('id').value = '';
+                document.getElementById('name').value = '';
+                document.getElementById('age').value = '';
+            };
+
+            request.onerror = function(event) {
+                if (event.target.error.name === 'ConstraintError') {
+                    document.getElementById('output').innerText = `Error: Student with ID ${id} already exists!`;
+                } else {
+                    document.getElementById('output').innerText = 'Error adding data: ' + event.target.error.message;
+                }
+            };
+        }
+        function readData() {
+            
+
+            const transaction = db.transaction(['students'], 'readonly');
+            const store = transaction.objectStore('students');
+            let ID= parseInt(document.getElementById('search').value)
+            const request = store.get(ID);  
+
+            request.onsuccess = function(event) {
+                if (event.target.result) {
+                    const student = event.target.result;
+                    document.getElementById('output').innerText = 
+                        `Found Student → ID: ${student.id}, Name: ${student.name}, Age: ${student.age}`;
+                } else {
+                    document.getElementById('output').innerText = 'No student found with ID 1.';
+                }
+            };
+
+            request.onerror = function() {
+                document.getElementById('output').innerText = 'Error reading data.';
+            };
+        }
+        function clearOutput() {
+            document.getElementById('output').innerText = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformations</title>
+<style>
+body{
+    display:flex;
+    gap:30px;
+    padding:40px;
+}
+
+div{
+    width:120px;
+    height:80px;
+    background-color:#CC3232;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    font-family:sans-serif;
+    transition:transform 1s;
+}
+
+/* effects on hover */
+.scale:hover{
+    transform:scale(1.4);
+}
+
+.translate:hover{
+    transform:translateX(40px);
+}
+
+.rotate:hover{
+    transform:rotate(45deg);
+}
+
+.skew:hover{
+    transform:scale(2);
+}
+.translate:hover{
+    transform:translate(-20px);
+}
+</style>
+</head>
+<body>
+
+<div class="scale">Scale</div>
+<div class="translate">Translate</div>
+<div class="rotate">Rotate</div>
+<div class="skew">Skew</div>
+<div class="rotate">rotate</div>
+
+</body>
+</html>

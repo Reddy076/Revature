@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+  <p>Enter your name</p>
+<input type="text" id="name">
+<p>click this button to set it to local storage</p>
+<!-- <input type="button" value="set name" onclick="setName()"> -->
+<!-- <input type="button" value="remove name" onclick=display()> -->
+ <input type="button" value="set data" onclick=setItem()>
+ <input type="button" value="get data" onclick=getItem()>
+ <input type="button" value="remove data" onclick=localStorage.removeItem(myName)>
+ <!-- <input type="button" value="remove data" onclick=removeItem()> -->
+
+
+<script>
+  // function display(){
+  //   localStorage.removeItem("name");
+  // }
+  // function setName(){
+  //   localStorage.setItem("name",document.getElementById("name").value)
+  // }
+
+  function setItem(){
+    if (typeof(Storage) !== "undefined") {
+      let name=document.getElementById("name").value
+      localStorage.myName=name;
+    }
+  }
+  function getItem(){
+    if (typeof Storage !== "undefined") {
+      alert(localStorage.myName);
+    }
+  }
+  function removeItem(){
+    localStorage.removeItem("myName");
+    localStorage.clear();
+    alert("data removed")
+  }
+  
+</script>
+
+
+    
+
+    </body>
+
+</html>
